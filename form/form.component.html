@@ -1,0 +1,60 @@
+<div Align="center">
+  <div class="card" style="height: 50%; width: 50%; border-color: white">
+    <div class="form-group" class="center">
+      <h1>Register!!</h1>
+      <form class="form-group" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && login()">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div>
+          <input id="email" type="text" formControlName="Email" placeholder="Email" class="form-control" /><br />
+        </div>
+        <p *ngIf="
+            loginForm.controls['Email'].dirty &&
+            loginForm.controls['Email'].errors
+          " class="alert alert-danger" width="50%">
+          Email Field is Invalid
+        </p>
+        <label for="name" class="col-sm-2 control-label">Name</label>
+        <div>
+          <input id="name" type="text" formControlName="Name" placeholder="Name" class="form-control" /><br />
+        </div>
+        <p *ngIf="
+            loginForm.controls['Name'].dirty &&
+            loginForm.controls['Name'].errors
+          " class="alert alert-danger">
+          Name should not Contains any numbers
+        </p>
+        <label for="pss" class="col-sm-2 control-label">Password</label>
+        <div>
+          <input id="pss" type="password" formControlName="Password" placeholder="Password"
+            class="form-control" /><br />
+        </div>
+        <p *ngIf="
+            loginForm.controls['Password'].dirty &&
+            loginForm.controls['Password'].errors
+          " class="alert alert-danger">
+          Minimum four characters, at least one uppercase letter, one lowercase
+          letter, one number and one special character
+        </p>
+        <label for="cpss" class="col-sm-2 control-label">Retype Password</label>
+        <div>
+          <input id="cpss" type="password" formControlName="Confirm_Password" placeholder="Retype the  Password"
+            class="form-control" /><br />
+        </div>
+        <p *ngIf="
+            loginForm.controls['Confirm_Password'].dirty &&
+            loginForm.controls['Confirm_Password'].errors
+          " class="alert alert-danger">
+          Minimum four characters, at least one uppercase letter, one lowercase
+          letter, one number and one special character
+        </p>
+        <p *ngIf="loginForm.controls['Confirm_Password'].errors?.['confirmPasswordValidator']"
+          class="alert alert-danger">
+          Password not matched
+        </p>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
+    </div>
+    {{ statusMSG }}
+    {{error}}
+  </div>
+</div>

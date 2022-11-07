@@ -1,0 +1,24 @@
+<div Align="center">
+    <div class="center" style="height:50%; width:50%">
+<h1>Authentication</h1>
+<form [formGroup]="authForm" (ngSubmit)="authForm.valid && Authenticate()">
+    <label for="id" class="col-sm-2 control-label ">User Id</label>
+    <input type="text" class="form-control" id="id" placeholder="User Id"  formControlName="UserId">
+    <p *ngIf="authForm.controls['UserId'].dirty && authForm.controls['UserId'].errors" class="alert alert-danger" width="50%">
+        UserId Field is Invalid
+      </p>
+    <label for="pswd" class="col-sm-2 control-label ">Password</label>
+    <input type="password" class="form-control" id="pswd" placeholder="Password"  formControlName="Password">
+    <p
+        *ngIf="authForm.controls['Password'].dirty && authForm.controls['Password'].errors"
+        class="alert alert-danger"
+      >
+        Minimum four characters, at least one uppercase letter, one lowercase
+        letter, one number and one special character
+      </p>
+    <button type="submit" class="btn btn-primary">Authenticate</button>
+</form>
+{{invalidCredentialMsg}}
+{{error}}
+</div>
+</div>
